@@ -8,9 +8,9 @@ module.exports = {
       // 在什么情况下验证
       "always",
       // 泛型内容
-      ["feat", "fix", "docs"],
+      ["feat", "fix", "docs"]
     ],
     // subject 大小写不做校验
-    "subject-case": [0],
-  },
+    "subject-case": [0]
+  }
 };

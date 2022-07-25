@@ -1,4 +1,5 @@
 const { defineConfig } = require("@vue/cli-service");
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 const path = require("path");
 function resolve(dir) {
   return path.join(__dirname, dir);
@@ -6,6 +7,9 @@ function resolve(dir) {
 
 module.exports = defineConfig({
   transpileDependencies: true,
+  configureWebpack: {
+    plugins: [new NodePolyfillPlugin()]
+  },
   devServer: {
     proxy: {
       "/api": {
@@ -24,8 +28,8 @@ module.exports = defineConfig({
       .use("svg-sprite-loader")
       .loader("svg-sprite-loader")
       .options({
-        symbolId: "icon-[name]",
+        symbolId: "icon-[name]"
       })
       .end();
-  },
+  }
 });
