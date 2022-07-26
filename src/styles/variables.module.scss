@@ -12,6 +12,8 @@ $subMenuBg: #1f2d3d;
 $subMenuHover: #001528;
 
 $sideBarWidth: 210px;
+$hideSidebarWidth: 54px;
+$sidebarDuration: 0.28s;
 
 // 定义与javascript共享的常量, js中通过esm导入，scss中通过 :export
 :export {

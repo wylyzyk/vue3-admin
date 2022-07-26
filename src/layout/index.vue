@@ -1,5 +1,8 @@
 <template>
-  <div class="app-wrapper">
+  <div
+    class="app-wrapper"
+    :class="[$store.getters.sidebarOpened ? 'openSidebar' : 'hideSidebar']"
+  >
     <!-- left menu -->
     <Sidebar
       class="sidebar-container"
@@ -43,5 +46,10 @@
     right: 0;
     z-index: 9;
     width: calc(100% - #{$sideBarWidth});
+
+    transition: width #{$sidebarDuration};
+  }
+  .hideSidebar .fixed-header {
+    width: calc(100% - #{$hideSidebarWidth});
   }
 </style>
