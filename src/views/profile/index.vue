@@ -1,3 +1,3 @@
 <template>
-  <h2>article-create</h2>
+  <h2>{{ $t("msg.test") }}</h2>
 </template>

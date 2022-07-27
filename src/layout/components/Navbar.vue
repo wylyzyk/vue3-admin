@@ -3,6 +3,7 @@
     <Hamburger class="hamburger-contaienr" />
     <Breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
+      <LangSelect class="right-menu-item hover-effect" />
       <!-- avatar -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -19,11 +20,11 @@
         <template #dropdown>
           <el-dropdown-menu>
             <router-link to="/">
-              <el-dropdown-item>主页</el-dropdown-item>
+              <el-dropdown-item>{{ $t("msg.navBar.home") }}</el-dropdown-item>
             </router-link>
             <router-link to="/">
               <el-dropdown-item divided @click="logout">
-                退出登录
+                {{ $t("msg.navBar.logout") }}
               </el-dropdown-item>
             </router-link>
           </el-dropdown-menu>
@@ -37,6 +38,7 @@
   import { useStore } from "vuex";
   import Hamburger from "@/components/hamburger/index.vue";
   import Breadcrumb from "@/components/breadcrumb/index.vue";
+  import LangSelect from "@/components/langSelect/index.vue";
 
   const store = useStore();
   const logout = () => {
@@ -51,35 +53,47 @@
     position: relative;
     background: #fff;
     box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
-  }
-  .hamburger-contaienr {
-    line-height: 46px;
-    height: 100%;
-    float: left;
-    cursor: pointer;
-
-    transition: background 0.5s;
-    &:hover {
-      background: rgba(0, 0, 0, 0.1);
-    }
-  }
-  .breadcrumb-container {
-    float: left;
-  }
-  .right-menu {
-    display: flex;
-    align-items: center;
-    float: right;
-    padding-right: 16px;
-
-    :deep .avatar-container {
+    .hamburger-contaienr {
+      line-height: 46px;
+      height: 100%;
+      float: left;
       cursor: pointer;
-      .avatar-wrapper {
-        position: relative;
-        margin-top: 5px;
-        .el-avatar {
-          --el-avatar-background-color: none;
-          margin-right: 12px;
+
+      transition: background 0.5s;
+      &:hover {
+        background: rgba(0, 0, 0, 0.1);
+      }
+    }
+    .breadcrumb-container {
+      float: left;
+    }
+    .right-menu {
+      display: flex;
+      align-items: center;
+      float: right;
+      padding-right: 16px;
+
+      :deep .avatar-container {
+        cursor: pointer;
+        .avatar-wrapper {
+          position: relative;
+          margin-top: 5px;
+          .el-avatar {
+            --el-avatar-background-color: none;
+            margin-right: 12px;
+          }
+        }
+      }
+
+      :deep .right-menu-item {
+        display: inline-block;
+        padding: 0 18px 0 0;
+        font-size: 24px;
+        color: #5a5e66;
+        vertical-align: text-bottom;
+
+        &:hover-effect {
+          cursor: pointer;
         }
       }
     }
