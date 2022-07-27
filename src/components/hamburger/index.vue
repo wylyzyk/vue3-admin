@@ -23,7 +23,7 @@
 
 <style lang="scss" scoped>
   .hamburger-container {
-    padding: 0 16px;
+    padding: 4px 16px;
     .hamburger {
       display: inline-block;
       vertical-align: middle;

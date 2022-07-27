@@ -96,7 +96,7 @@ const publicRoutes = [
         path: "/profile",
         name: "profile",
         component: () => import("@/views/profile/index"),
-        meta: { title: "profile", icon: "el-icon-user" }
+        meta: { title: "profile", icon: "me" }
       },
       {
         // 404
