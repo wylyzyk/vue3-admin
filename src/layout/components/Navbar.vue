@@ -3,6 +3,7 @@
     <Hamburger class="hamburger-contaienr" />
     <Breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
+      <ThemeSelect class="right-menu-item hover-effect" />
       <LangSelect class="right-menu-item hover-effect" />
       <!-- avatar -->
       <el-dropdown class="avatar-container" trigger="click">
@@ -39,6 +40,7 @@
   import Hamburger from "@/components/hamburger/index.vue";
   import Breadcrumb from "@/components/breadcrumb/index.vue";
   import LangSelect from "@/components/langSelect/index.vue";
+  import ThemeSelect from "@/components/themeSelect/index.vue";
 
   const store = useStore();
   const logout = () => {
@@ -92,7 +94,7 @@
         color: #5a5e66;
         vertical-align: text-bottom;
 
-        &:hover-effect {
+        &:hover {
           cursor: pointer;
         }
       }
