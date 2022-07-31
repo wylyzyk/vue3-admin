@@ -1,8 +1,9 @@
 <template>
   <div class="navbar">
-    <Hamburger class="hamburger-contaienr" />
+    <Hamburger class="hamburger-container" />
     <Breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
+      <Screenfull class="right-menu-item hover-effect" />
       <ThemeSelect class="right-menu-item hover-effect" />
       <LangSelect class="right-menu-item hover-effect" />
       <!-- avatar -->
@@ -41,6 +42,7 @@
   import Breadcrumb from "@/components/breadcrumb/index.vue";
   import LangSelect from "@/components/langSelect/index.vue";
   import ThemeSelect from "@/components/themeSelect/index.vue";
+  import Screenfull from "@/components/screenfull/index.vue";
 
   const store = useStore();
   const logout = () => {
@@ -55,7 +57,7 @@
     position: relative;
     background: #fff;
     box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
-    .hamburger-contaienr {
+    .hamburger-container {
       line-height: 46px;
       height: 100%;
       float: left;
