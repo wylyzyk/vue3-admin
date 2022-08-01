@@ -1,4 +1,5 @@
 <template>
+  <div></div>
   <!-- 展示外部图标 -->
   <div
     v-if="isExternal"
