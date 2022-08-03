@@ -11,6 +11,7 @@
     <div class="main-container">
       <div class="fixed-header">
         <Navbar />
+        <TagsView />
       </div>
       <!-- content -->
       <AppMain />
@@ -23,6 +24,7 @@
   import Sidebar from "./components/sidebar";
   import AppMain from "./components/AppMain.vue";
   import variables from "@/styles/variables.module.scss";
+  import TagsView from "@/components/tagsView/index.vue";
 
   console.log(variables);
 </script>
