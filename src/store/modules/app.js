@@ -35,6 +35,37 @@ export default {
     changeTagsView(state, { index, tag }) {
       state.tagsViewList[index] = tag;
       setItem(TAGS_VIEW, state.tagsViewList);
+    },
+    /**
+     * 移除指定tag
+     * @param {*} state
+     * @param { type: "other" | "right" | "index", index } payload
+     */
+    removeTagsView(state, payload) {
+      const { type, index } = payload;
+      if (type === "other") {
+        // state.tagsViewList = [state.tagsViewList[index]];
+
+        state.tagsViewList.splice(
+          index + 1,
+          state.tagsViewList.length - index + 1
+        );
+        state.tagsViewList.splice(0, index);
+      } else if (type === "right") {
+        // state.tagsViewList.forEach((value, i) => {
+        //   if (i === index) {
+        //     state.tagsViewList = [state.tagsViewList[index]];
+        //   }
+        // });
+        state.tagsViewList.splice(
+          index + 1,
+          state.tagsViewList.length - index + 1
+        );
+      } else if (type === "index") {
+        state.tagsViewList.splice(index, 1);
+      }
+
+      setItem(TAGS_VIEW, state.tagsViewList);
     }
   }
 };
