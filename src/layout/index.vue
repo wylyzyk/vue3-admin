@@ -5,13 +5,14 @@
   >
     <!-- left menu -->
     <Sidebar
+      id="guide-sidebar"
       class="sidebar-container"
       :style="{ backgroundColor: $store.getters.cssVar.menuBg }"
     />
     <div class="main-container">
       <div class="fixed-header">
         <Navbar />
-        <TagsView />
+        <TagsView id="guide-tags" />
       </div>
       <!-- content -->
       <AppMain />
