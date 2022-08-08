@@ -36,7 +36,8 @@
 
   .app-wrapper {
     @include clearfix;
-    overflow: hidden;
+    // overflow: hidden;
+    // overflow-y: auto;
     position: relative;
     height: 100%;
     width: 100%;
