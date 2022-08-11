@@ -8,12 +8,14 @@ import "element-plus/dist/index.css";
 import installElement from "./plugins/element";
 import installI18n from "./i18n";
 import "./premission";
+import installFilters from "@/filter";
 
 const app = createApp(App);
 
 installElement(app);
 installSvgIcons(app);
 installI18n(app);
+installFilters(app);
 
 app.use(router);
 app.use(store);
