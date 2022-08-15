@@ -5,6 +5,7 @@
   import { onActivated, ref } from "vue";
   import { useI18n } from "vue-i18n";
   import { useRouter } from "vue-router";
+  import ExportToExcel from "./components/export2Excel.vue";
   // 数据相关
   const tableData = ref([]);
   const total = ref(0);
@@ -54,6 +55,12 @@
   const onExcelImport = () => {
     router.push("/user/import");
   };
+
+  // 导出
+  const exportToExcelVisible = ref(false);
+  const onToExcelClick = () => {
+    exportToExcelVisible.value = true;
+  };
 </script>
 
 <template>
@@ -63,7 +70,9 @@
         <el-button type="primary" @click="onExcelImport">
           {{ $t("msg.excel.importExcel") }}
         </el-button>
-        <el-button type="success">{{ $t("msg.excel.exportExcel") }}</el-button>
+        <el-button type="success" @click="onToExcelClick">{{
+          $t("msg.excel.exportExcel")
+        }}</el-button>
       </div>
     </el-card>
 
@@ -133,6 +142,8 @@
         :total="total"
       ></el-pagination>
     </el-card>
+
+    <ExportToExcel v-model="exportToExcelVisible" />
   </div>
 </template>
 
