@@ -35,6 +35,12 @@
     getListData();
   };
 
+  // 查看用户详情
+  // const router = useRouter();
+  const onShowClick = (id) => {
+    router.push(`/user/info/${id}`);
+  };
+
   // 删除用户
   const i18n = useI18n();
   const onRemove = (row) => {
@@ -119,7 +125,11 @@
           width="300"
         >
           <template #default="{ row }">
-            <el-button type="primary" size="small">
+            <el-button
+              type="primary"
+              size="small"
+              @click="onShowClick(row._id)"
+            >
               {{ $t("msg.excel.show") }}
             </el-button>
             <el-button type="info" size="small">

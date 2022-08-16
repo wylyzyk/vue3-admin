@@ -49,29 +49,31 @@
 </script>
 
 <template>
-  <div class="tags-view-container" id="guide-tags">
-    <router-link
-      v-for="(tag, index) in $store.getters.tagsViewList"
-      :key="tag.fullpath"
-      class="tags-view-item"
-      :class="isActive(tag) ? 'active' : ''"
-      :to="{ path: tag.fullPath }"
-      :style="{
-        backgroundColor: isActive(tag) ? $store.getters.cssVar.menuBg : '',
-        borderColor: isActive(tag) ? $store.getters.cssVar.menuBg : ''
-      }"
-      @contextmenu.prevent="openMenu($event, index)"
-    >
-      {{ tag.title }}
-      <i v-show="!isActive(tag)" @click.prevent.stop="onCloseClick(index)">
-        <el-icon>
-          <Close />
-        </el-icon>
-      </i>
-    </router-link>
-  </div>
+  <div>
+    <div class="tags-view-container" id="guide-tags">
+      <router-link
+        v-for="(tag, index) in $store.getters.tagsViewList"
+        :key="tag.fullpath"
+        class="tags-view-item"
+        :class="isActive(tag) ? 'active' : ''"
+        :to="{ path: tag.fullPath }"
+        :style="{
+          backgroundColor: isActive(tag) ? $store.getters.cssVar.menuBg : '',
+          borderColor: isActive(tag) ? $store.getters.cssVar.menuBg : ''
+        }"
+        @contextmenu.prevent="openMenu($event, index)"
+      >
+        {{ tag.title }}
+        <i v-show="!isActive(tag)" @click.prevent.stop="onCloseClick(index)">
+          <el-icon>
+            <Close />
+          </el-icon>
+        </i>
+      </router-link>
+    </div>
 
-  <ContextMenu v-show="visible" :style="menuPosition" :index="selectIndex" />
+    <ContextMenu v-show="visible" :style="menuPosition" :index="selectIndex" />
+  </div>
 </template>
 
 <style lang="scss" scoped>
