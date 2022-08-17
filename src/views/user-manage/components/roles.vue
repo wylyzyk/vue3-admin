@@ -36,7 +36,7 @@
   const userRoleTitleList = ref([]);
   const getUserRoles = async () => {
     const res = await userRoles(props.userId);
-    console.log(res);
+    userRoleTitleList.value = res.role.map((item) => item.title);
   };
 
   watch(
