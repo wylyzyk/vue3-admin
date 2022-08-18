@@ -168,7 +168,11 @@
     </el-card>
 
     <ExportToExcel v-model="exportToExcelVisible" />
-    <RolesDialog v-model="roleDialogVisible" :userId="selectUserId" />
+    <RolesDialog
+      v-model="roleDialogVisible"
+      :userId="selectUserId"
+      @updateRole="getListData"
+    />
   </div>
 </template>
 

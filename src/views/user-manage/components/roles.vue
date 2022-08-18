@@ -2,7 +2,9 @@
   import { defineProps, defineEmits, ref, watch } from "vue";
   import { roleList } from "@/api/role";
   import { watchSwitchLanguage } from "@/utils/i18n";
-  import { userRoles } from "@/api/user-manage";
+  import { userRoles, updateRole } from "@/api/user-manage";
+  import { ElMessage } from "element-plus";
+  import { useI18n } from "vue-i18n";
 
   const props = defineProps({
     modelValue: {
@@ -15,13 +17,25 @@
     }
   });
 
-  const emits = defineEmits(["update:modelValue"]);
+  const emits = defineEmits(["update:modelValue", "updateRole"]);
 
   const closed = () => {
     emits("update:modelValue", false);
   };
 
-  const onConfirm = () => {
+  const i18n = useI18n();
+  const onConfirm = async () => {
+    const roles = userRoleTitleList.value.map((title) => {
+      return allRoleList.value.find((role) => role.title === title);
+    });
+
+    await updateRole(props.userId, roles);
+
+    ElMessage.success(i18n.t("msg.role.updateRoleSuccess"));
+
+    // 角色更新成功
+    emits("updateRole");
+
     closed();
   };
 
