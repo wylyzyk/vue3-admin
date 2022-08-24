@@ -9,12 +9,12 @@
   const total = ref(0);
 
   const getListData = async () => {
-    const { list, total } = await getArticleList({
+    const { list, total: resultTotal } = await getArticleList({
       page: page.value,
       size: size.value
     });
     tableData.value = list;
-    total.value = total;
+    total.value = resultTotal;
   };
   getListData();
   watchSwitchLanguage(getListData);
@@ -44,10 +44,11 @@
           :label="$t('msg.article.author')"
           prop="author"
         ></el-table-column>
-        <el-table-column
-          :label="$t('msg.article.publicDate')"
-          prop="publicDate"
-        ></el-table-column>
+        <el-table-column :label="$t('msg.article.publicDate')">
+          <template #default="{ row }">
+            {{ $filters.relativeTime(row.publicDate) }}
+          </template>
+        </el-table-column>
         <el-table-column
           :label="$t('msg.article.desc')"
           prop="desc"
