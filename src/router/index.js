@@ -5,6 +5,7 @@ import article from "./modules/article";
 import permissionList from "./modules/permissionList";
 import roleList from "./modules/roleList";
 import userManage from "./modules/userManage";
+import store from "@/store";
 
 /**
  * 私有路由表
@@ -58,5 +59,18 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: publicRoutes
 });
+
+export const resetRouter = () => {
+  if (
+    store.getters.userInfo &&
+    store.getters.userInfo.permission &&
+    store.getters.userInfo.permission.menus
+  ) {
+    const menus = store.getters.userInfo.permission.menus;
+    menus.forEach((menu) => {
+      router.removeRoute(menu);
+    });
+  }
+};
 
 export default router;
