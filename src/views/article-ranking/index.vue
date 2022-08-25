@@ -1,7 +1,8 @@
 <script setup>
+  import { onActivated, ref } from "vue";
   import { getArticleList } from "@/api/article";
   import { watchSwitchLanguage } from "@/utils/i18n";
-  import { onActivated, ref } from "vue";
+  import { selectDaynamicLabel, dynamicData, tableColumns } from "./dynamic";
 
   const tableData = ref([]);
   const page = ref(1);
@@ -30,37 +31,38 @@
 
 <template>
   <div class="article-ranking-container">
+    <el-card class="header">
+      <div class="dynamic-box">
+        <span class="title">{{ $t("msg.article.dynamicTitle") }}</span>
+        <el-checkbox-group v-model="selectDaynamicLabel">
+          <el-checkbox
+            v-for="(item, index) in dynamicData"
+            :label="item.label"
+            :key="index"
+            >{{ item.label }}</el-checkbox
+          >
+        </el-checkbox-group>
+      </div>
+    </el-card>
     <el-card>
       <el-table ref="tableRef" :data="tableData" border>
         <el-table-column
-          :label="$t('msg.article.ranking')"
-          prop="ranking"
-        ></el-table-column>
-        <el-table-column
-          :label="$t('msg.article.title')"
-          prop="title"
-        ></el-table-column>
-        <el-table-column
-          :label="$t('msg.article.author')"
-          prop="author"
-        ></el-table-column>
-        <el-table-column :label="$t('msg.article.publicDate')">
-          <template #default="{ row }">
+          v-for="({ prop, label }, index) in tableColumns"
+          :key="index"
+          :label="label"
+          :prop="prop"
+        >
+          <template v-if="prop === 'publicDate'" #default="{ row }">
             {{ $filters.relativeTime(row.publicDate) }}
           </template>
-        </el-table-column>
-        <el-table-column
-          :label="$t('msg.article.desc')"
-          prop="desc"
-        ></el-table-column>
-        <el-table-column :label="$t('msg.article.action')">
-          <template #default="{ row }">
-            <el-button type="primary" size="small" @click="onShowClick(row)">{{
-              $t("msg.article.show")
-            }}</el-button>
-            <el-button type="danger" size="small" @click="onRemoveClick(row)">{{
-              $t("msg.article.remove")
-            }}</el-button>
+
+          <template v-else-if="prop === 'action'" #default="{ row }">
+            <el-button type="primary" size="small" @click="onShowClick(row)">
+              {{ $t("msg.article.show") }}
+            </el-button>
+            <el-button type="danger" size="small" @click="onRemoveClick(row)">
+              {{ $t("msg.article.remove") }}
+            </el-button>
           </template>
         </el-table-column>
       </el-table>

@@ -21,14 +21,12 @@ function getLanguage() {
   return store && store.getters && store.getters.language;
 }
 
-const i18n = createI18n({
+export const i18n = createI18n({
   legacy: false,
   globalInjection: true,
   messages,
   locale: getLanguage()
 });
-
-export { i18n };
 
 export default (app) => {
   app.use(i18n);
