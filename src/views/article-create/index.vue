@@ -2,9 +2,27 @@
   import { ref } from "vue";
   import Markdown from "./components/markdown.vue";
   import Editor from "./components/editor.vue";
+  import { useRoute } from "vue-router";
+  import { articleDetail } from "@/api/article";
 
   const title = ref("");
   const activeName = ref("markdown");
+
+  const route = useRoute();
+  const articleId = route.params.id;
+  const detail = ref({});
+  const getArticleDetail = async () => {
+    detail.value = await articleDetail(articleId);
+    title.value = detail.value.title;
+  };
+
+  if (articleId) {
+    getArticleDetail();
+  }
+
+  const onSuccess = () => {
+    title.value = "";
+  };
 </script>
 
 <template>
@@ -20,7 +38,7 @@
 
       <el-tabs v-model="activeName">
         <el-tab-pane :label="$t('msg.article.markdown')" name="markdown">
-          <Markdown />
+          <Markdown :title="title" @onSuccess="onSuccess" :detail="detail" />
         </el-tab-pane>
         <el-tab-pane :label="$t('msg.article.richText')" name="editor">
           <Editor />
