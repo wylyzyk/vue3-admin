@@ -7,6 +7,7 @@
   import { ElMessageBox, ElMessage } from "element-plus";
   import { useI18n } from "vue-i18n";
   import { deleteArticle } from "@/api/article";
+  import { useRouter } from "vue-router";
 
   const tableData = ref([]);
   const page = ref(1);
@@ -39,8 +40,9 @@
     getListData();
   };
 
+  const router = useRouter();
   const onShowClick = (row) => {
-    console.log(row);
+    router.push(`/article/${row._id}`);
   };
 
   const i18n = useI18n();
