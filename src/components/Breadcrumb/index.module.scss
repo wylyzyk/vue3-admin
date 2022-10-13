@@ -1,0 +1,25 @@
+@import "../../styles/variables.module.scss";
+
+.breadcrumb {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 50px;
+  margin-left: 8px;
+}
+
+.redirect {
+  color: #666;
+  font-weight: 600;
+  cursor: pointer;
+  line-height: 50px;
+
+  &:hover {
+    color: $menuBg;
+  }
+}
+
+.no-redirect {
+  color: #97a8be;
+  cursor: text;
+  line-height: 50px;
+}
