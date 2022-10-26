@@ -33,13 +33,6 @@ export default defineConfig(() => {
         symbolId: "icon-[name]"
       })
     ],
-    css: {
-      // preprocessorOptions: {
-      //   scss: {
-      //     additionalData: "@import '@/styles/index.scss'"
-      //   }
-      // }
-    },
     resolve: {
       alias: {
         "@": fileURLToPath(new URL("./src", import.meta.url))

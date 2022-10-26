@@ -1,0 +1,23 @@
+.author-container {
+  .header {
+    display: flex;
+
+    .header-desc {
+      margin-left: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .info {
+    margin-top: 16px;
+    line-height: 22px;
+    font-size: 14px;
+    text-indent: 26px;
+  }
+}

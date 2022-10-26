@@ -2,18 +2,26 @@
   "extends": "@vue/tsconfig/tsconfig.web.json",
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
   "compilerOptions": {
-    "strictNullChecks": false,
+    // 不允许出现 可能为 null 或 undefined 的值
+    "strictNullChecks": true,
     "moduleResolution": "node",
+    // 通过为导入内容创建命名控件, 实现commonjs和es模块之间的互操作性
     "esModuleInterop": true,
     "experimentalDecorators": true,
+    // 每个文件作为一个单独的模块
     "isolatedModules": true,
+    // 不允许存在隐式的this
     "noImplicitThis": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "target": "esnext",
-    "module": "esnext",
+    // 不允许存在any
+    "noImplicitAny": true,
+    // 目标版本
+    "target": "es5",
+    // 使用模块
+    "module": "commonjs",
+    // 允许编译js
     "allowJs": true,
-    "importsNotUsedAsValues": "preserve",
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
