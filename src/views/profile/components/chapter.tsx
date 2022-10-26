@@ -10,7 +10,7 @@ export default defineComponent(() => {
     chapterData.value = await chapter();
   };
   getChapterData();
-  watchSwitchLanguage(getChapterData());
+  watchSwitchLanguage(getChapterData);
 
   return () => (
     <Timeline>

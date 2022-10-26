@@ -16,7 +16,7 @@ export default defineComponent(() => {
   };
   getFeatureData();
 
-  watchSwitchLanguage(getFeatureData());
+  watchSwitchLanguage(getFeatureData);
 
   const i18n = useI18n();
 
